@@ -8,6 +8,9 @@
 
 <!-- Badges row -->
 <p>
+  <a href="https://wuw2135.github.io/ReflexSplit-ProjectPage/">
+    <img src="https://img.shields.io/badge/ProjectPage-⏎-80c1e0?logo=github&logoColor=80c1e0" />
+  </a>
   <a href="https://www.arxiv.org/pdf/2601.17468">
     <img src="https://img.shields.io/badge/arXiv-2601.17468-red?logo=arxiv&logoColor=red" />
   </a>
@@ -81,5 +84,6 @@ coming soon...
   year={2026}
 }
 ```
+
 
 
