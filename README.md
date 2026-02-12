@@ -36,7 +36,20 @@
 
 
 
-coming soon...
+### Framework
+<p align="center">
+  <img src="assets/Reflex_arch.png" alt="framework" />
+</p>
+
+### Layer Fusion-Separation Block (LFSB) 
+<p align="center">
+  <img src="assets/Reflex_DDAIB.jpg" alt="lfsb" />
+</p>
+
+<details style="font-size: 15px;">
+<summary>Abstract</summary> 
+Single Image Reflection Separation (SIRS) disentangles mixed images into transmission and reflection layers. Existing methods suffer from transmission-reflection confusion under nonlinear mixing, particularly in deep decoder layers, due to implicit fusion mechanisms and inadequate multi-scale coordination. We propose ReflexSplit, a dual-stream framework with three key innovations. (1) Cross scale Gated Fusion (CrGF) adaptively aggregates semantic priors, texture details, and decoder context across hier archical depths, stabilizing gradient flow and maintaining feature consistency. (2) Layer Fusion-Separation Blocks (LFSB) alternate between fusion for shared structure extraction and differential separation for layer-specific disentanglement. Inspired by Differential Transformer, we extend attention cancellation to dual-stream separation via cross-stream subtraction. (3) Curriculum training progressively strengthens differential separation through depth dependent initialization and epoch-wise warmup. Extensive experiments on synthetic and real-world benchmarks demonstrate state-of-the-art performance with superior perceptual quality and robust generalization.
+</details>
 
 
 
@@ -68,4 +81,5 @@ coming soon...
   year={2026}
 }
 ```
+
 
