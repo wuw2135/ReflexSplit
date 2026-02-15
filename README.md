@@ -79,11 +79,12 @@ coming soon...
 ```
 @article{lee2026reflexsplit,
   title={ReflexSplit: Single Image Reflection Separation via Layer Fusion-Separation},
-  author={Lee, Chia-Ming and Lin, Yu-Fan and Jung, Jing-Hui and Hsiao, Yu-Jou and Hsu, Chih-Chung and Liu, Yu-Lun},
+  author={Lee, Chia-Ming and Lin, Yu-Fan and Jiang, Jin-Hui and Hsiao, Yu-Jou and Hsu, Chih-Chung and Liu, Yu-Lun},
   journal={arXiv preprint arXiv:2601.17468},
   year={2026}
 }
 ```
+
 
 
 
