@@ -2,7 +2,7 @@
   <img src="assets/icon.jpg" alt="icon" />
 </p>
 
-# 🪞ReflexSplit: Single Image Reflection Separation via Layer Fusion-Separation
+# 🪞ReflexSplit: Single Image Reflection Separation via Layer Fusion-Separation (✨CVPR 2026✨)
 
 <div align="center">
 
@@ -54,8 +54,6 @@
 Single Image Reflection Separation (SIRS) disentangles mixed images into transmission and reflection layers. Existing methods suffer from transmission-reflection confusion under nonlinear mixing, particularly in deep decoder layers, due to implicit fusion mechanisms and inadequate multi-scale coordination. We propose ReflexSplit, a dual-stream framework with three key innovations. (1) Cross scale Gated Fusion (CrGF) adaptively aggregates semantic priors, texture details, and decoder context across hier archical depths, stabilizing gradient flow and maintaining feature consistency. (2) Layer Fusion-Separation Blocks (LFSB) alternate between fusion for shared structure extraction and differential separation for layer-specific disentanglement. Inspired by Differential Transformer, we extend attention cancellation to dual-stream separation via cross-stream subtraction. (3) Curriculum training progressively strengthens differential separation through depth dependent initialization and epoch-wise warmup. Extensive experiments on synthetic and real-world benchmarks demonstrate state-of-the-art performance with superior perceptual quality and robust generalization.
 </details>
 
-
-
 ## 🏞️Environment
 coming soon...
 
@@ -84,6 +82,7 @@ coming soon...
   year={2026}
 }
 ```
+
 
 
 
