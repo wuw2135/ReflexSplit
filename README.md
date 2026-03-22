@@ -55,13 +55,65 @@ Single Image Reflection Separation (SIRS) disentangles mixed images into transmi
 </details>
 
 ## 🏞️Environment
-coming soon...
+### Installation
+```
+pip install torch>=2.0 torchvision
+pip install numpy scipy scikit-learn matplotlib opencv-python tqdm einops tensorboardx tensorboard dominate
+```
 
 ## 🗂️Data preparing
-coming soon...
+### Data Structure
+```
+Datasets/
+├── dataset1/
+│   ├── blended/
+|   |   ├── 1.png
+|   |   ├── 2.png
+|   |   ...
+│   ├── reflection_layer/
+|   |   ├── 1.png
+|   |   ├── 2.png
+|   |   ...
+│   └── transmission_layer/
+|       ├── 1.png
+|       ├── 2.png
+|       ...
+├── dataset2/
+│   ├── blended/
+|   |   ├── 1.png
+|   |   ├── 2.png
+|   |   ...
+│   └── transmission_layer/
+|       ├── 1.png
+|       ├── 2.png
+|       ...
+...
+```
+**⚠️ If you use the SIR² dataset, please follow the structure pattern of dataset1; for all others, please follow the structure pattern of dataset2.**
 
+### Training dataset
+* 7,643 images from the
+  [Pascal VOC dataset](http://host.robots.ox.ac.uk/pascal/VOC/), center-cropped as 224 x 224 slices to synthesize training pairs;  
+* 90 real-world training pairs provided by [Zhang *et al.*](https://github.com/ceciliavision/perceptual-reflection-removal);
+* 200 real-world training pairs provided by [IBCLN](https://github.com/JHL-HUST/IBCLN);
+
+### Testing dataset
+* 45 real-world testing images from [CEILNet dataset](https://github.com/fqnchina/CEILNet);
+* 20 real testing pairs provided by [Zhang *et al.*](https://github.com/ceciliavision/perceptual-reflection-removal);
+* 20 real testing pairs provided by [IBCLN](https://github.com/JHL-HUST/IBCLN);
+* 500 real testing pairs from [SIR^2 dataset](https://sir2data.github.io/), containing three subsets (i.e., Objects (200), Postcard (199), Wild (101)). 
+
+### Trained weights
+to be continued...
 ## 🔧Usage
-coming soon...
+### Training
+```python
+python train.py --name train --size_rounded --batchSize 1 --base_dir <YOUR_DATA_DIR>
+```
+### Testing
+```python
+python eval.py --name eval --size_rounded --test_nature --weight_path <YOUR_WEIGHT_PATH> --base_dir <YOUR_DATA_DIR>
+```
 
 ## 🎭Visual Comparison
 <p align="center">
