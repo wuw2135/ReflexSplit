@@ -104,7 +104,9 @@ Datasets/
 * 500 real testing pairs from [SIR^2 dataset](https://sir2data.github.io/), containing three subsets (i.e., Objects (200), Postcard (199), Wild (101)). 
 
 ### Trained weights
-to be continued...
+[Download the file](https://drive.google.com/drive/folders/17bJQ609VfV_i0OiqB0-xkw6TwfkGE4Mp?usp=sharing) and place it in the `weights` folder.  
+
+
 ## 🔧Usage
 ### Training
 ```python
@@ -134,6 +136,9 @@ python eval.py --name eval --size_rounded --test_nature --weight_path <YOUR_WEIG
   year={2026}
 }
 ```
+
+## 
+This study was supported in part by the National Science and Technology Council (NSTC), Taiwan, under grants 112-2221-E-006-157-MY3, 114-2627-M-A49-003, 114-2218-E-035-001, and 114-2119-M-006-007. We thank to National Center for High-performance Computing (NCHC) of National Applied Research Laboratories (NARLabs) in Taiwan for providing computational and storage resources.
 
 
 
