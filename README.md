@@ -117,6 +117,66 @@ python train.py --name train --size_rounded --batchSize 1 --base_dir <YOUR_DATA_
 python eval.py --name eval --size_rounded --test_nature --weight_path <YOUR_WEIGHT_PATH> --base_dir <YOUR_DATA_DIR>
 ```
 
+## 🧪Figure 1 Reproduction and Image Generation Notes
+
+The OpenRR-1k Figure 1 teaser image discussed in the paper corresponds to
+`val_100/val_0034.jpg`. This image should be treated as a validation/test image, not as a
+training sample.
+
+In the reproduction workflow, the model is fine-tuned on **OpenRR-1k `train_800`** and then
+evaluated on **OpenRR-1k `val_100/val_0034.jpg`** to generate the Figure 1-style visual panels.
+The released checkpoint alone, when tested zero-shot on `val_0034`, does not reproduce the
+28.54 dB teaser result; that value is reached only after short in-domain fine-tuning on the
+OpenRR-1k training split.
+
+### Image generation workflow
+
+The Figure 1-style panels are generated in three steps:
+
+1. Fine-tune ReflexSplit on `train_800`.
+2. Save the transmission and reflection outputs for `val_0034` at selected iterations.
+3. Assemble the saved outputs into comparison panels.
+
+Expected per-iteration outputs:
+
+```text
+iterXXX_T.png   # predicted transmission / reflection-removed image
+iterXXX_R.png   # predicted reflection layer
+```
+
+Expected assembled outputs:
+
+```text
+fig1_iterXXX.png   # paper-style panel: input/GT, DSIT, RDNet, ReflexSplit
+grid.png           # iteration overview, e.g. iter 140-160
+```
+
+Example commands used by the reproduction package:
+
+```bash
+PYTHONPATH=/path/to/ReflexSplit OUT_DIR=/data/out/rs \
+REFLEX_NO_HIST=1 REFLEX_PAPER_LOSS=1 REFLEX_AMP=1 \
+python code/ft_reflexsplit.py
+
+python code/make_fig1.py \
+  --rs_dir /data/out/rs \
+  --dsit_dir /data/out/dsit \
+  --rdnet_dir /data/out/rdnet \
+  --rs_log /data/out/rs.log \
+  --dsit_log /data/out/dsit.log \
+  --rdnet_log /data/out/rdnet.log \
+  --inp /data/openrr1k/val_100/val_100/blended/val_0034.jpg \
+  --gt /data/openrr1k/val_100/val_100/transmission_layer/val_0034.jpg \
+  --out /data/out/fig1
+```
+
+### Important metric note
+
+When comparing ReflexSplit with DSIT and RDNet, all methods must use the same image conversion
+and PSNR calculation. The model outputs are in `[0, 1]`, so they should be converted by clipping
+to `[0, 1]` and multiplying by 255. Do not mix visualization utilities from different
+repositories, because inconsistent normalization can produce washed-out images and inflated PSNR.
+
 ## 🎭Visual Comparison
 <p align="center">
   <img src="assets/vis.png" alt="vis" />
@@ -139,8 +199,3 @@ python eval.py --name eval --size_rounded --test_nature --weight_path <YOUR_WEIG
 
 ## 
 This study was supported in part by the National Science and Technology Council (NSTC), Taiwan, under grants 112-2221-E-006-157-MY3, 114-2627-M-A49-003, 114-2218-E-035-001, and 114-2119-M-006-007. We thank to National Center for High-performance Computing (NCHC) of National Applied Research Laboratories (NARLabs) in Taiwan for providing computational and storage resources.
-
-
-
-
-
